@@ -5,4 +5,5 @@
 
 
 ## Sources/Thanks
-## ESP32-S3-Box3-Custom Firmware [here](<https://github.com/BigBobbas/ESP32-S3-Box3-Custom-ESPHome/blob/main/instructions/installation%20guide.md>)
+### ESP32-S3-Box3-Custom Firmware [here](<https://github.com/BigBobbas/ESP32-S3-Box3-Custom-ESPHome>)
+### LLM Vision [here](<https://github.com/valentinfrlch/ha-llmvision>)
