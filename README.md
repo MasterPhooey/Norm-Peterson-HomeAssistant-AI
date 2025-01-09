@@ -1,4 +1,9 @@
-# Norm Peterson HomeAssistant AI
+<p align="center">
+  <img src="https://raw.githubusercontent.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/refs/heads/main/images/loading.png" alt="Loading Image">
+</p>
+
+<h1 align="center">Norm Peterson HomeAssistant AI</h1>
+
 ## LLM-Vision-Norman Blueprint
 BluePrint changes from original 
   - Adds "Norman Sees" to Notification Title
