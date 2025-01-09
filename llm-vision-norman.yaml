@@ -352,8 +352,10 @@ action:
                     title: "{{ label }}"
                     message: "{{response.response_text}}"
                     data:
-                      image: "{{image if image != '' else None}}"
-                      entity_id: "{{camera_entity if mode=='Camera' and preview_mode=='Live Preview'}}"
+                      # Explicitly remove the video or image reference
+                      image: None
+                      video: None
+                      entity_id: None
                       url: !input tap_navigate #iOS
                       clickAction: !input tap_navigate #Android
                       tag: "{{tag}}"
