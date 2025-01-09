@@ -154,7 +154,7 @@ blueprint:
     message:
       name: Prompt
       description: Model prompt for the video_analyzer action
-      default: "Summarize what's happening in the camera feed (one sentence max). Don't describe the scene! If there is a person, describe what they're doing and what they look like. If they look like a courier mention that! If you do not see any people or animals in the scene, don't describe the scene simply say, No People Currently."
+      default: "Summarize what's happening in the camera feed (one sentence max). If there is a person, describe what they're doing and what they look like. If they look like a courier mention that! If you do not see any people or animals in the scene, don't describe the scene simply say, No People Currently."
       selector:
         text:
           multiline: true
