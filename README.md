@@ -1,6 +1,7 @@
 # Norm Peterson HomeAssistant AI
 ## LLM-Vision-Norman Blueprint
 BluePrint changes from original 
+  - Adds "Norman Sees" to Notification Title
   - Removed instant notifications
   - Only notify after summary
   - Excluds the clip 
