@@ -13,3 +13,4 @@ BluePrint changes from original
 ## Sources/Thanks
 ### ESP32-S3-Box3-Custom Firmware [here](<https://github.com/BigBobbas/ESP32-S3-Box3-Custom-ESPHome>)
 ### LLM Vision [here](<https://github.com/valentinfrlch/ha-llmvision>)
+### microWakeWord [here](<https://github.com/kahrendt/microWakeWord>)
