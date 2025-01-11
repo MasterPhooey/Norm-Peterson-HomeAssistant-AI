@@ -1,5 +1,5 @@
 blueprint:
-  name: Norman Event Summary (LLM Vision v1.3.5)
+  name: AI Event Summary (LLM Vision v1.3.5)
   author: valentinfrlch
   description: >
     AI-powered security event summaries for frigate or camera entities.
@@ -154,7 +154,7 @@ blueprint:
     message:
       name: Prompt
       description: Model prompt for the video_analyzer action
-      default: "Summarize what's happening in the camera feed (one sentence max). If there is a person, describe what they're doing and what they look like. If they look like a courier mention that! If you do not see any people or animals in the scene, don't describe the scene simply say, No People Currently."
+      default: "Summarize what's happening in the camera feed (one sentence max). Don't describe the scene! If there is a person, describe what they're doing and what they look like. If they look like a courier mention that! If nothing is happening, say so."
       selector:
         text:
           multiline: true
@@ -237,7 +237,7 @@ variables:
     {% if mode == 'Frigate' %}
       {{ trigger.payload_json['after']['label']|capitalize }} seen
     {% else %}
-      Norman Sees
+      Motion detected
     {% endif %}
   camera: >
     {% if mode == 'Frigate' %}
@@ -293,8 +293,55 @@ condition:
         true
       {% endif %}
 
-
 action:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ important }}"
+        sequence:
+          - alias: "Decide Important"
+            choose:
+              - conditions:
+                  - condition: template
+                    value_template: "{{ mode == 'Frigate'}}"
+                sequence:
+                  - action: llmvision.image_analyzer
+                    data:
+                      image_entity: "{{ ['camera.' + trigger.payload_json['after']['camera']|lower] }}"
+                      provider: !input provider
+                      model: !input model
+                      message: "{{importance_prompt}}"
+                      include_filename: true
+                      target_width: 1280
+                      detail: low
+                      max_tokens: 3
+                      temperature: 0.1
+                    response_variable: importance
+              - conditions:
+                  - condition: template
+                    value_template: "{{ mode == 'Camera' }}"
+                sequence:
+                  - action: llmvision.image_analyzer
+                    data:
+                      image_entity: "{{[camera_entity]}}"
+                      provider: !input provider
+                      model: !input model
+                      message: "{{importance_prompt}}"
+                      include_filename: true
+                      target_width: 1280
+                      detail: low
+                      max_tokens: 3
+                      temperature: 0.1
+                    response_variable: importance
+
+  # Cancel automation if event not deemed important
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ importance is defined and importance.response_text|lower == 'passive' }}"
+        sequence:
+          - stop: "Event is not important"
+
   - alias: "Analyze event"
     choose:
       - conditions:
@@ -338,13 +385,13 @@ action:
               expose_images: "{{true if preview_mode == 'Snapshot'}}"
             response_variable: response
 
-  - alias: "Notify after summary"
-    choose:
+  - choose:
       - conditions:
           - condition: template
-            value_template: "{{ response.response_text is defined and response.response_text != '' }}"
+            value_template: "{{ image != '' or video != '' }}"
         sequence:
-          - repeat:
+          - alias: "Send final notification with AI description"
+            repeat:
               for_each: "{{device_name_map}}"
               sequence:
                 - action: "notify.{{ repeat.item }}"
@@ -352,14 +399,12 @@ action:
                     title: "{{ label }}"
                     message: "{{response.response_text}}"
                     data:
-                      # Explicitly remove the video or image reference
-                      image: None
-                      video: None
-                      entity_id: None
+                      video: "{{video if video != '' else None}}"
+                      entity_id: "{{camera_entity if mode=='Camera' and preview_mode=='Live Preview'}}"
                       url: !input tap_navigate #iOS
                       clickAction: !input tap_navigate #Android
                       tag: "{{tag}}"
                       group: "{{group}}"
-                      interruption-level: active
+                      interruption-level: passive
 
   - delay: '00:{{cooldown|int}}:00'
