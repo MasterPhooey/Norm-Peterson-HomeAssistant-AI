@@ -1,5 +1,5 @@
 blueprint:
-  name: AI Event Summary (LLM Vision v1.3.5)
+  name: Norman Event Summary (LLM Vision v1.3.5)
   author: valentinfrlch
   description: >
     AI-powered security event summaries for frigate or camera entities.
@@ -237,7 +237,7 @@ variables:
     {% if mode == 'Frigate' %}
       {{ trigger.payload_json['after']['label']|capitalize }} seen
     {% else %}
-      Motion detected
+      Norman Sees...
     {% endif %}
   camera: >
     {% if mode == 'Frigate' %}
