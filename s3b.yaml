@@ -1500,8 +1500,7 @@ display:
           it.printf(160, 75, id(my_font5), orange, TextAlign::CENTER, "IP Address");
           it.printf(160, 95, id(my_font5), yellow, TextAlign::CENTER, "%s", id(ip_addr).state.c_str());
           it.printf(160, 125, id(my_font5), orange, TextAlign::CENTER, "Host Name");
-          it.printf(160, 145, id(my_font5), yellow, TextAlign::CENTER, "${name}.local");
-          it.printf(160, 195, id(my_font5), yellow, TextAlign::CENTER, "%s", id(up_sens_text).state.c_str());  
+          it.printf(160, 145, id(my_font5), yellow, TextAlign::CENTER, "${name}.local");  
           
           
       - id: ss_set_page ##### screen saver settings page #####
