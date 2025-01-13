@@ -161,8 +161,12 @@ variables:
   camera_entities_list: !input camera_entities
   motion_sensors_list: !input motion_sensors
   camera_entity: >
-    {% set index = motion_sensors_list.index(trigger.entity_id) %}
-    {{ camera_entities_list[index] }}
+    {% if trigger.entity_id in motion_sensors_list %}
+      {% set index = motion_sensors_list.index(trigger.entity_id) %}
+      {{ camera_entities_list[index] }}
+    {% else %}
+      {{ stop('Motion sensor not found in motion_sensors_list') }}
+    {% endif %}
   tag: >
     {{ camera_entity + int(as_timestamp(now()))|string }}
   group: >
