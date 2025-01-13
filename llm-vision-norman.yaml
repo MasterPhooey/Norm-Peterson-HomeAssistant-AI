@@ -165,7 +165,8 @@ variables:
       {% set index = motion_sensors_list.index(trigger.entity_id) %}
       {{ camera_entities_list[index] }}
     {% else %}
-      {{ stop('Motion sensor not found in motion_sensors_list') }}
+      {{ log("Motion sensor not found in motion_sensors_list: " ~ trigger.entity_id) }}
+      {{ None }}  # Return None if the motion sensor is not found
     {% endif %}
   tag: >
     {{ camera_entity + int(as_timestamp(now()))|string }}
@@ -199,6 +200,18 @@ trigger:
 condition: []
 
 action:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ camera_entity is none }}"
+        sequence:
+          - alias: "Stop if motion sensor not found"
+            service: system_log.write
+            data:
+              message: "Motion sensor not found in motion_sensors_list: {{ trigger.entity_id }}"
+              level: error
+            stop: "Motion sensor not found"
+
   - choose:
       - conditions:
           - condition: template
