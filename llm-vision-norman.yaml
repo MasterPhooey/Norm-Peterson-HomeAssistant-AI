@@ -1,5 +1,5 @@
 blueprint:
-  name: AI Event Summary (Motion Sensor Only)
+  name: Norman Event Summary (Motion Sensor Only)
   author: valentinfrlch
   description: >
     AI-powered security event summaries triggered by motion sensors.
