@@ -1,5 +1,5 @@
 blueprint:
-  name: Norman Event Summary (Motion Sensor Only)
+  name: AI Event Summary (Motion Sensor Only)
   author: valentinfrlch
   description: >
     AI-powered security event summaries triggered by motion sensors.
@@ -210,7 +210,7 @@ action:
             data:
               message: "Motion sensor not found in motion_sensors_list: {{ trigger.entity_id }}"
               level: error
-            stop: "Motion sensor not found"
+          - stop: "Motion sensor not found"  # Correct usage of stop
 
   - choose:
       - conditions:
