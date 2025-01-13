@@ -1,5 +1,5 @@
 blueprint:
-  name: Norman Event Summary (LLM Vision v1.3.5)
+  name: Norman Event Summary (LLM Vision v1.3.1)
   author: valentinfrlch
   description: >
     AI-powered security event summaries for frigate or camera entities.
@@ -154,7 +154,7 @@ blueprint:
     message:
       name: Prompt
       description: Model prompt for the video_analyzer action
-      default: "Summarize what's happening in the camera feed (one sentence max). If there is a person, describe what they're doing and what they look like. If they look like a courier mention that! If you do not see any people or animals in the scene, don't describe the scene simply say, No People Currently."
+      default: "Summarize what's happening in the camera feed (one sentence max). Don't describe the scene! If there is a person, describe what they're doing and what they look like. If they look like a courier mention that! If you do not see any people or animals in the scene, don't describe the scene simply say, I See No People Currently."
       selector:
         text:
           multiline: true
@@ -203,7 +203,7 @@ variables:
     {% set ns = namespace(device_names=[]) %}
     {% for device_id in notify_devices %}
       {% set device_name = device_attr(device_id, "name") %}
-      {% set sanitized_name = "mobile_app_" + device_name | slugify  %}
+      {% set sanitized_name = "mobile_app_" + device_name | lower | regex_replace("[' -]", "_") | regex_replace("[^a-z0-9_]", "")  %}
       {% set ns.device_names = ns.device_names + [sanitized_name] %}
     {% endfor %}
     {{ ns.device_names }}
@@ -308,7 +308,6 @@ action:
               model: !input model
               message: !input message
               remember: !input remember
-              generate_title: !input remember
               include_filename: true
               max_frames: !input max_frames
               target_width: !input target_width
@@ -328,7 +327,6 @@ action:
               model: !input model
               message: !input message
               remember: !input remember
-              generate_title: !input remember
               include_filename: true
               max_frames: !input max_frames
               target_width: !input target_width
@@ -338,11 +336,11 @@ action:
               expose_images: "{{true if preview_mode == 'Snapshot'}}"
             response_variable: response
 
-  - alias: "Notify after summary"
+  - alias: "Send notification with description only"
     choose:
       - conditions:
           - condition: template
-            value_template: "{{ response.response_text is defined and response.response_text != '' }}"
+            value_template: "{{ response.response_text is defined }}"
         sequence:
           - repeat:
               for_each: "{{device_name_map}}"
@@ -350,14 +348,13 @@ action:
                 - action: "notify.{{ repeat.item }}"
                   data:
                     title: "{{ label }}"
-                    message: "{{response.response_text}}"
+                    message: "{{ response.response_text }}"
                     data:
-                      image: "{{image if image != '' else None}}"
-                      entity_id: "{{camera_entity if mode=='Camera' and preview_mode=='Live Preview'}}"
-                      url: !input tap_navigate #iOS
-                      clickAction: !input tap_navigate #Android
+                      # No video or image attachments
+                      url: !input tap_navigate # iOS
+                      clickAction: !input tap_navigate # Android
                       tag: "{{tag}}"
                       group: "{{group}}"
-                      interruption-level: active
+                      interruption-level: passive
 
   - delay: '00:{{cooldown|int}}:00'
