@@ -708,18 +708,6 @@ sensor:
   - platform: homeassistant
     id: weather_lightning_count
     entity_id: ${lightning_count_sensor}
-          
-  - platform: uptime
-    id: up_sens
-    on_value:
-      - lambda: |-
-          int seconds = id(up_sens).state;
-          int days = seconds / 86400;
-          int hours = seconds / 3600;
-          int minutes = (seconds % 3600) / 60;
-          seconds %= 60;
-          id(up_sens_text).publish_state(str_sprintf("%03d:%02d:%02d:%02d", days, hours, minutes, seconds)); 
-    update_interval: 30s
 
   - platform: wifi_signal
     name: "WiFi db"
@@ -771,12 +759,6 @@ text_sensor:
       entity_category: "diagnostic"
     mac_address:
       id: device_mac
-
-  - platform: template
-    id: up_sens_text
-    name: Device uptime
-    entity_category: "diagnostic"
-    icon: mdi:clock
 
   - platform: template
     id: wakeword_location
@@ -1519,7 +1501,6 @@ display:
           it.printf(160, 95, id(my_font5), yellow, TextAlign::CENTER, "%s", id(ip_addr).state.c_str());
           it.printf(160, 125, id(my_font5), orange, TextAlign::CENTER, "Host Name");
           it.printf(160, 145, id(my_font5), yellow, TextAlign::CENTER, "${name}.local");
-          it.printf(160, 175, id(my_font5), orange, TextAlign::CENTER, "Device Uptime DDD:H:M:S");
           it.printf(160, 195, id(my_font5), yellow, TextAlign::CENTER, "%s", id(up_sens_text).state.c_str());  
           
           
