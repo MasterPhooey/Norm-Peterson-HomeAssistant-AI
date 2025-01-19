@@ -15,7 +15,7 @@ BluePrint changes from original
 
 ## esp32-s3-box-3 Home Screen
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/refs/heads/main/images/home.png" alt="Loading Image" width="300" height="200">
+  <img src="https://raw.githubusercontent.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/refs/heads/main/images/home.png" alt="Loading Image" style="width: 300px; height: auto;">
 </p>
 
 ## Sources/Thanks
