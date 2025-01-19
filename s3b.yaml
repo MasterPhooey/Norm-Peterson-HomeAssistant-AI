@@ -786,7 +786,7 @@ color:
   - id: paused_timer_color
     hex: "3b89e3"
   - id: orange
-    hex: "FF6100"
+    hex: "FF4000"
   - id: red
     hex: "FF0000"
   - id: white
