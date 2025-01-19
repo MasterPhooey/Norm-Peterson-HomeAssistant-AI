@@ -16,10 +16,10 @@ substitutions:
   voice_assist_error_phase_id: '11'
 
 esphome:
-  name: normanv
-  friendly_name: NormanV
+  name: home-assistant-voice
+  friendly_name: Home Assistant Voice
   name_add_mac_suffix: true
-  min_version: 2024.12.2
+  min_version: 2024.12.4
   platformio_options:
     board_build.flash_mode: dio
   on_boot:
@@ -96,8 +96,6 @@ esp32:
       CONFIG_MBEDTLS_SSL_PROTO_TLS1_3: "y"  # TLS1.3 support isn't enabled by default in IDF 5.1.5
 
 wifi:
-  ssid: !secret wifi_ssid
-  password: !secret wifi_password
   id: wifi_id
   on_connect:
     - lambda: id(improv_ble_in_progress) = false;
@@ -1417,6 +1415,7 @@ microphone:
 
 speaker:
   - platform: i2s_audio
+    id: i2s_audio_speaker
     sample_rate: 48000
     i2s_mode: secondary
     i2s_dout_pin: GPIO10
@@ -1516,9 +1515,6 @@ external_components:
       - nabu_microphone
       - voice_assistant
       - voice_kit
-    refresh: 0s
-  - source: github://pr#8018
-    components: [http_request]
     refresh: 0s
 
 audio_dac:
@@ -1661,6 +1657,12 @@ button:
     name: "Factory Reset"
     entity_category: diagnostic
     internal: true
+  - platform: restart
+    id: restart_button
+    name: "Restart"
+    entity_category: config
+    disabled_by_default: true
+    icon: "mdi:restart"
 
 debug:
   update_interval: 5s
