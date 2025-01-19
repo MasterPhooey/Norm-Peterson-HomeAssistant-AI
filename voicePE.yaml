@@ -1,4 +1,5 @@
 substitutions:
+  mDNS: normanv-kitchen-0957b7.local
   # Phases of the Voice Assistant
   # The voice assistant is ready to be triggered by a wake word
   voice_assist_idle_phase_id: '1'
@@ -16,8 +17,8 @@ substitutions:
   voice_assist_error_phase_id: '11'
 
 esphome:
-  name: home-assistant-voice
-  friendly_name: Home Assistant Voice
+  name: normanV-kitchen
+  friendly_name: NormanV Kitchen
   name_add_mac_suffix: true
   min_version: 2024.12.4
   platformio_options:
@@ -96,6 +97,9 @@ esp32:
       CONFIG_MBEDTLS_SSL_PROTO_TLS1_3: "y"  # TLS1.3 support isn't enabled by default in IDF 5.1.5
 
 wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  use_address: ${mDNS}
   id: wifi_id
   on_connect:
     - lambda: id(improv_ble_in_progress) = false;
