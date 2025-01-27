@@ -141,10 +141,6 @@ logger:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
-
-  ap:
-    ssid: ${name}
-    password: s3box123
   on_connect:
     - lambda: |-
         id(wifi_connection) = true;
