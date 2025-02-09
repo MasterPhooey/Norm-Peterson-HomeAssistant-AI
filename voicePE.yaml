@@ -16,8 +16,8 @@ substitutions:
   voice_assist_error_phase_id: '11'
 
 esphome:
-  name: normanV-kitchen
-  friendly_name: NormanV Kitchen
+  name: tatervpe-kitchen
+  friendly_name: TaterVPE Kitchen
   name_add_mac_suffix: false
   min_version: 2024.12.4
   platformio_options:
@@ -1526,7 +1526,7 @@ audio_dac:
 micro_wake_word:
   id: mww
   models:
-    - model: https://raw.githubusercontent.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/refs/heads/main/microWakeWord/hey_norman.json
+    - model: https://raw.githubusercontent.com/MasterPhooey/Tater-HomeAssistant-AI/refs/heads/main/microWakeWord/hey_tater.json
       id: hey_norman
     - model: https://github.com/kahrendt/microWakeWord/releases/download/stop/stop.json
       id: stop
