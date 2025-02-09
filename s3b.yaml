@@ -12,7 +12,7 @@ substitutions:
   wind_gust_sensor: "sensor.weather_max_daily_wind_gust"
   lightning_count_sensor: "sensor.weather_lightning_strikes"
 
-  external_media_player: norman_office_speaker_raspiaudio_muse_luxe_1ea574  ##change this to your external media player enity_id: do not include media_player.
+  external_media_player: tater_office_speaker_raspiaudio_muse_luxe_1ea574  ##change this to your external media player enity_id: do not include media_player.
   home_assistant_host: http://homeassistant.local:8123 ##change to the full url or IP of your HA server including port
   tts_voice_speed: "24000" #options #nabu casa "24000" #piper "16000" elevenlabs "44100" must include quotes
   
@@ -21,7 +21,7 @@ substitutions:
 ####      you can use any of these without re-compiling - just say them!    #####
 #################################################################################
 # TO REMOVE A WAKE WORD - COMMENT OUT THE CORESPONDING LINE FROM THE CONFIG BELOW - CTRL + F to search for "models" 
-  micro_wake_word_model_1: https://raw.githubusercontent.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/refs/heads/main/microWakeWord/hey_norman.json
+  micro_wake_word_model_1: https://raw.githubusercontent.com/MasterPhooey/Tater-HomeAssistant-AI/refs/heads/main/microWakeWord/hey_tater.json
   #micro_wake_word_model_2: hey_jarvis
   #micro_wake_word_model_3: okay_nabu # latest test can also be used >> replace okay_nabu with this url https://github.com/kahrendt/microWakeWord/releases/download/okay_nabu/okay_nabu.json
   #micro_wake_word_model_4: hey_mycroft
@@ -1120,95 +1120,95 @@ voice_assistant:
                 - component.update: s3_box_lcd
 
 image:
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/images/error.png"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/images/error.png"
     id: error_img
     resize: 320x240
     type: RGB24
     use_transparency: true
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/images/idle.png"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/images/idle.png"
     id: idle_img
     resize: 320x240
     type: RGB24
     use_transparency: true
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/images/listening.png"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/images/listening.png"
     id: listening_img
     resize: 320x240
     type: RGB24
     use_transparency: true
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/images/thinking.png"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/images/thinking.png"
     id: thinking_img
     resize: 320x240
     type: RGB24
     use_transparency: true
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/images/replying.png"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/images/replying.png"
     id: replying_img
     resize: 320x240
     type: RGB24
     use_transparency: true
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/images/loading.png"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/images/loading.png"
     id: loading_img
     resize: 320x240
     type: RGB24
     use_transparency: true
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/images/logo.png"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/images/logo.png"
     id: logo_img
     resize: 80x75
     type: RGB24
     use_transparency: true 
 font:
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font
     size: 14
     glyphs:
       '${font_glyphs}'
 
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font16
     size: 16
     glyphs:
       '${font_glyphs}'
       
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font2
     size: 72
     glyphs:
       '${font_glyphs}'
 
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font3
     size: 28
     glyphs:
       '${font_glyphs}'
 
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font4
     size: 40
     glyphs:
       '${font_glyphs}'
       
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font18
     size: 18
     glyphs:
       '${font_glyphs}'      
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font5
     size: 22
     glyphs:
       '${font_glyphs}'
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font6
     size: 50
     glyphs:
       '${font_glyphs}'
 
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/consola.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/consola.ttf"
     id: my_font82
     size: 82
     glyphs:
       '${font_glyphs}'     
 
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/materialdesignicons-webfont.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/materialdesignicons-webfont.ttf"
     id: icon_font_55
     size: 45
     glyphs: &icon_glyphs
@@ -1296,18 +1296,18 @@ font:
       - "\U000F059E"#wind
 
       
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/materialdesignicons-webfont.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/materialdesignicons-webfont.ttf"
     id: icon_font_180
     size: 180
     glyphs: *icon_glyphs
 
 
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/materialdesignicons-webfont.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/materialdesignicons-webfont.ttf"
     id: icon_font_80
     size: 75
     glyphs: *icon_glyphs
 
-  - file: "https://github.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/raw/main/fonts/materialdesignicons-webfont.ttf"
+  - file: "https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/main/fonts/materialdesignicons-webfont.ttf"
     id: icon_font_60
     size: 60
     glyphs: *icon_glyphs
