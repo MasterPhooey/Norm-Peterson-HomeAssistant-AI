@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/refs/heads/main/images/loading.png" alt="Loading Image">
+  <img src="https://raw.githubusercontent.com/MasterPhooey/Norm-Peterson-HomeAssistant-AI/refs/heads/main/images/tater.png" height="200">
+
 </p>
 
 <h1 align="center">Tater HomeAssistant AI</h1>
