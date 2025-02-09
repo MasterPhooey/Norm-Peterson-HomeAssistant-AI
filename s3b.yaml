@@ -3,8 +3,8 @@
 ## Once added to HA changing the device name can lead to connection issues, between HA and the device.
 
 substitutions:
-  name: "norman-game"
-  friendly_name: Norman Game
+  name: "tater-game"
+  friendly_name: Tater Game
   timezone: "US/Central"
   outdoor_temp_sensor: "sensor.weather_outdoor_temperature"
   indoor_temp_sensor: "sensor.game_room_temperature"
