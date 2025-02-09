@@ -1527,7 +1527,7 @@ micro_wake_word:
   id: mww
   models:
     - model: https://raw.githubusercontent.com/MasterPhooey/Tater-HomeAssistant-AI/refs/heads/main/microWakeWord/hey_tater.json
-      id: hey_norman
+      id: hey_tater
     - model: https://github.com/kahrendt/microWakeWord/releases/download/stop/stop.json
       id: stop
       internal: true
