@@ -1,9 +1,9 @@
 {
   "type": "micro",
-  "wake_word": "Hey Norman",
+  "wake_word": "Hey Tater",
   "author": "master phooey",
   "website": "https://github.com/",
-  "model": "hey_norman.tflite",
+  "model": "hey_tater.tflite",
   "trained_languages": ["en"],
   "version": 2,
     "micro": {
