@@ -1491,7 +1491,7 @@ media_player:
       - id: timer_finished_sound
         file: https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/timer_finished.flac
       - id: wake_word_triggered_sound
-        file: https://github.com/MasterPhooey/Tater-HomeAssistant-AI/blob/main/sounds/what.mp3
+        file: https://github.com/MasterPhooey/Tater-HomeAssistant-AI/raw/refs/heads/main/sounds/what.mp3
       - id: easter_egg_tick_sound
         file: https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/easter_egg_tick.mp3
       - id: easter_egg_tada_sound
