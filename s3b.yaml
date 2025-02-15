@@ -345,7 +345,7 @@ script:
               service: media_player.play_media
               data:
                 entity_id: media_player.${external_media_player}
-                media_content_id: '${home_assistant_host}/local/sounds/timer_finished.mp3'
+                media_content_id: 'https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/timer_finished.flac'
                 media_content_type: music
           - delay: 1700ms
         
@@ -878,7 +878,7 @@ micro_wake_word:
         then:
           - media_player.play_media:
               id: adf_media_player
-              media_url: '${home_assistant_host}/local/sounds/awake.mp3'
+              media_url: 'https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/wake_word_triggered.flac'
           - delay: 500ms
           - media_player.stop
           - voice_assistant.start:
@@ -894,7 +894,7 @@ micro_wake_word:
                   service: media_player.play_media
                   data:
                     entity_id: media_player.${external_media_player}
-                    media_content_id: '${home_assistant_host}/local/sounds/awake.mp3'
+                    media_content_id: 'https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/wake_word_triggered.flac'
                     media_content_type: music
               - media_player.stop
               - voice_assistant.start:
@@ -925,7 +925,7 @@ voice_assistant:
             - switch.is_on: wake_sound
         then:    
           - media_player.play_media:
-              media_url: '${home_assistant_host}/local/sounds/awake.mp3'
+              media_url: 'https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/wake_word_triggered.flac'
           - delay: 500ms
           - media_player.stop
           - display.page.show: listening_page
@@ -941,7 +941,7 @@ voice_assistant:
                     service: media_player.play_media
                     data:
                       entity_id: media_player.${external_media_player}
-                      media_content_id: '${home_assistant_host}/local/sounds/awake.mp3'
+                      media_content_id: 'https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/wake_word_triggered.flac'
                       media_content_type: music
     - media_player.stop
 
