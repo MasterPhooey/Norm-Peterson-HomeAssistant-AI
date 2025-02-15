@@ -80,7 +80,7 @@ esphome:
               id: adf_media_player
               volume: 0 
   project:
-    name: "norm.s3box"
+    name: "tot.s3box"
     version: "2024.09.01"
 esp32:
   board: esp32s3box
